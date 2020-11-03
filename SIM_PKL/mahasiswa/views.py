@@ -20,7 +20,7 @@ def index(req):
             messages.success(req, 'Data telah ditambahkan.')
             return redirect('/mahasiswa')
         else:
-            messages.danger(req, 'A problem has been occurred while submitting your data.')
+            messages.error(req, 'A problem has been occurred while submitting your data.')
 
 
     # group = req.user.groups.first()
@@ -136,11 +136,6 @@ def update_staf(req, id):
 def approve(req, id):
     a = models.Pkl.objects.filter(pk=id).update(approve=True)
     return redirect('/mahasiswas')
-
-# def approve_batal(req, id):
-#     a = models.Pkl.objects.filter(pk=id).update(approve=False)
-#     return redirect('/mahasiswas')
-
 
 def reject(req,id):
     form_reject = forms.RejectForm(req.POST)
