@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from mahasiswa.models import Pkl
+# from catatan.models import Gambar
 from . import models, forms
 from django.contrib import messages
 
@@ -40,6 +41,7 @@ def index_staf(req):
 
 def index_mhs(req):
     forum = req.user.mahasiswa.first().nama_mitra
+
     return redirect(f'/forum/{forum.id}')
 
 def delete_forum(req, id):
@@ -53,6 +55,9 @@ def detail_forum(req, id):
     form_input = forms.PostingForm()
     form_komen = forms.KomenForm()
     form_balas = forms.BalasForm()
+    form_gambar = forms.GambarForm()
+
+
 
     if req.POST:
         form_input = forms.PostingForm(req.POST, req.FILES)
@@ -60,12 +65,18 @@ def detail_forum(req, id):
             form_input.instance.owner = req.user
             form_input.instance.forum = forum
             form_input.save()
+        images = []
+        files = req.FILES.getlist('upload_img')
+        for file in files:
+            images.append(models.Gambar.objects.create(upload_img=file,catatan=form_catatan.instance))
+
         return redirect(f'/forums/{id}')
 
     return render(req, 'forums/detail.html', {
         'form': form_input,
         'form_komen': form_komen,
         'form_balas': form_balas,
+        'form_gambar' : form_gambar,
         'data': forum,
     })
 

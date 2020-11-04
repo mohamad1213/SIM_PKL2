@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'forum',
     # 'comment',
     'countable_field',
-    'gm2m',
 ]
 
 MIDDLEWARE = [
@@ -78,9 +77,9 @@ WSGI_APPLICATION = 'SIM_PKL.wsgi.application'
 DATABASES = {
         'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'simpkl',
-        'USER': 'tatam',
-        'PASSWORD': 'katakanlah123',
+        'NAME': 'simlabsos',
+        'USER': 'mohamad',
+        'PASSWORD': 'tatam123',
         'HOST': 'localhost',
         'PORT': '',
     }

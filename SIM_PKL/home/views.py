@@ -4,6 +4,7 @@ from mahasiswa.models import Pkl
 from catatan import models, forms
 from forum.models import Forum
 
+
 def index(req):
     group = req.user.groups.first()
     tasks = models.Catatan.objects.filter(owner=req.user)
@@ -43,6 +44,10 @@ def delete_catatan(req, id):
 
 def cetak(req):
     cetak = models.Catatan.objects.all()
+    tasks = Forum.objects.all()
+    pkl = Pkl.objects.all()
     return render(req, 'home/cetak.html', {
         'cetak' : cetak,
+        'tasks' :tasks, 
+        'pkl' :pkl,
     })
