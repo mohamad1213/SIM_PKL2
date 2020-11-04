@@ -43,7 +43,7 @@
         <h3>LOG BOOK- CATATAN HARIAN KEGIATAN MAHASISWA</h3>
         <br>
     </div>
-    {% for d in pkl %}
+    {% for d in tasks %}
     <dl class="row">
         <dt class="col-1">Nama :</dt>
         <dd class="col-5">{{user}}</dd>
@@ -57,17 +57,20 @@
         <dd class="col-5">?</dd>
     </dl>
     {% endfor %}
+
+    {% for p in pkl %}
+    <dl class="row">
+        <dt class="col-1">DPL:</dt>
+        <dd class="col-5">{{p.nama_dosen}}</dd>
+        <dt class="col-1">Judul :</dt>
+        <dd class="col-5">{{p.judul}}</dd>
+    </dl>
+    {% endfor %}
     <dl class="row">
         <dt class="col-1">Fakultas:</dt>
         <dd class="col-5">Teknologi Informasi</dd>
-        <dt class="col-1">Judul :</dt>
-        <dd class="col-5">{{d.judul}}</dd>
-    </dl>
-    <dl class="row">
         <dt class="col-1">Prodi :</dt>
-        <dd class="col-5">Informatika</dd>
-        <dt class="col-1">DPL:</dt>
-        <dd class="col-5">{{d.nama_dosen}}</dd>
+        <dd class="col-5">Informatika</dd> 
     </dl>
     <hr>
     <table class="table table-hover">
