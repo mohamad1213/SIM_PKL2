@@ -138,6 +138,11 @@ def delete_posting_mhs(req, id, id_posting):
     models.Posting.objects.filter(pk=id_posting).delete()
     messages.success(req, 'data telah di hapus.')
     return redirect(f'/forum/{id}')
+    
+def delete_komen_mhs(req, id, id_komen):
+    models.Komen.objects.filter(pk=id_komen).delete()
+    messages.success(req, 'data telah di hapus.')
+    return redirect(f'/forum/{id}/komen')
 
 def delete_komen(req, id, id_komen):
     models.Komen.objects.filter(pk=id_komen).delete()
@@ -149,10 +154,6 @@ def delete_komen_d(req, id, id_komen):
     messages.success(req, 'data telah di hapus.')
     return redirect(f'/forumd/{id}/komen')
 
-def delete_komen_mhs(req, id, id_komen):
-    models.Komen.objects.filter(pk=id_komen).delete()
-    messages.success(req, 'data telah di hapus.')
-    return redirect(f'/forum/{id}/komen')
 
 def staf_komen(req, id, id_posting):
     posting = models.Posting.objects.filter(pk=id_posting).first() 

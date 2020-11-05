@@ -23,7 +23,7 @@ class Posting(models.Model):
     forum = models.ForeignKey(Forum, on_delete = models.DO_NOTHING,related_name='posting')
     owner = models.ForeignKey(User, on_delete = models.DO_NOTHING,related_name='owner')
     waktu = models.DateTimeField(default=datetime.now)
-    desc = models.TextField(max_length=2000)
+    desc = models.CharField(max_length=200)
     upload_img = models.FileField(default='', upload_to='images/', null=False, blank=True)
     class Meta :
         ordering = ['-waktu']
