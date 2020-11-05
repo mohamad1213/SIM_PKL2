@@ -139,10 +139,10 @@ def delete_posting_mhs(req, id, id_posting):
     messages.success(req, 'data telah di hapus.')
     return redirect(f'/forum/{id}')
     
-def delete_komen_mhs(req, id, id_komen):
+def delete_komen_mhs(req, id, id_posting, id_komen):
     models.Komen.objects.filter(pk=id_komen).delete()
     messages.success(req, 'data telah di hapus.')
-    return redirect(f'/forum/{id}/komen')
+    return redirect(f'/forum/{id}')
 
 def delete_komen(req, id, id_komen):
     models.Komen.objects.filter(pk=id_komen).delete()

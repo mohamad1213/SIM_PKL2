@@ -46,7 +46,7 @@
                   <!-- Modal Detail -->
                   <div class="modal fade" id="detail-{{d.id}}" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-dialog modal-dialog-scrollable" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
                           <h5 class="modal-title" id="detail">Detail Data</h5>
@@ -55,8 +55,15 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          <h4>andkjandja</h4>
-                          <p>jbhabjhada</p>
+                          <dd><i>{{d.waktu}}</i></dd>
+                          <dt>{{d.judul}}</dt>
+                          <p>{{d.ket}}</p>
+                          {% for d in d.catatan.all %}
+                          <div class="col-12" style="text-align: center;"><img src="{{d}}" width="100%">
+                          <a href="{{d}}">File {{forloop.counter}}</a>
+                        </div>
+                          {% endfor %}
+
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-danger" data-toggle="modal"
