@@ -5,8 +5,13 @@ from mahasiswa.models import Pkl
 from . import models, forms
 from django.contrib import messages
 
+def index_mhs(req):
+    forum = req.user.mahasiswa.first().nama_mitra
+
+    return redirect(f'/forum/{forum.id}')
+
 def index_dosen(req):
-    tasks = models.Forum.objects.all()
+    tasks = req.user.membimbing.all()
     form_input = forms.ForumForm()
 
     if req.POST:
@@ -39,10 +44,6 @@ def index_staf(req):
         'form' : form_input,
     })
 
-def index_mhs(req):
-    forum = req.user.mahasiswa.first().nama_mitra
-
-    return redirect(f'/forum/{forum.id}')
 
 def delete_forum(req, id):
     models.Forum.objects.filter(pk=id).delete()
@@ -115,6 +116,8 @@ def detail_forum_mhs(req, id):
             form_input.instance.forum = forum
             form_input.save()
         return redirect(f'/forum/{id}')
+
+    print(forum.posting.first())
 
     return render(req, 'forum/detail.html', {
         'form': form_input,

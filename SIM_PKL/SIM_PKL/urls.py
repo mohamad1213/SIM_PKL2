@@ -14,7 +14,7 @@ urlpatterns = [
     path('dosenah/', include('mahasiswa.urls_dosen')),
     # path('dosen/', include('dosen.urls')),
     path('dosens/', include('dosen.urls_staf')),
-    path('catatan_m/', include('catatan.urls')),
+    path('catatan_d/', include('catatan.urls_dosen')),
     path('mitras/', include('mitra.urls_staf')),
     path('forums/', include('forum.urls_staf')),
     path('forumd/', include('forum.urls_dosen')),

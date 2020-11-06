@@ -11,7 +11,7 @@ import os
 
 class Forum(models.Model):
     owner = models.ForeignKey(User, on_delete = models.DO_NOTHING,related_name='forum')
-    nama_mitra = models.CharField( max_length=255)
+    nama_mitra = models.CharField(max_length=255)
     alamat = models.CharField( max_length=255)
     deskripsi = models.TextField(default='')
     pic = models.CharField( max_length=255)
@@ -24,9 +24,16 @@ class Posting(models.Model):
     owner = models.ForeignKey(User, on_delete = models.DO_NOTHING,related_name='owner')
     waktu = models.DateTimeField(default=datetime.now)
     desc = models.CharField(max_length=200)
-    upload_img = models.FileField(default='', upload_to='images/', null=False, blank=True)
+    upload_img = models.FileField(upload_to='images/', null=True, blank=True)
     class Meta :
         ordering = ['-waktu']
+        
+    @property
+    def upload_img_url(self):
+        if self.upload_img and hasattr(self.upload_img, 'url'):
+            return self.upload_img.url
+        return ''
+
     def save(self,force_insert=False, force_update=False, using=None,*args, **kwargs):
         super(Posting, self).save(*args, **kwargs)
         if self.upload_img and os.path.splitext(self.upload_img.name)[1] in ['.jpg', '.jpeg','.png']:
@@ -47,7 +54,7 @@ class Posting(models.Model):
         return file_path
    
     def __str__(self):
-        return self.upload_img.url
+        return self.upload_img_url
 
     
 
