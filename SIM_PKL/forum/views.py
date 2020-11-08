@@ -82,10 +82,11 @@ def detail_forum(req, id):
     })
 
 def detail_forum_d(req, id):
-    forum = models.Forum.objects.filter(pk=id).first() 
+    forum = models.Forum.objects.filter(pk=id).first()
     form_input = forms.PostingForm()
     form_komen = forms.KomenForm()
     form_balas = forms.BalasForm()
+    print(forum)
 
     if req.POST:
         form_input = forms.PostingForm(req.POST, req.FILES)
