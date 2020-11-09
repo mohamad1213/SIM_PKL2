@@ -56,7 +56,7 @@ def detail_forum(req, id):
     form_input = forms.PostingForm()
     form_komen = forms.KomenForm()
     form_balas = forms.BalasForm()
-    form_gambar = forms.GambarForm()
+    # form_gambar = forms.GambarForm()
 
 
 
@@ -77,7 +77,7 @@ def detail_forum(req, id):
         'form': form_input,
         'form_komen': form_komen,
         'form_balas': form_balas,
-        'form_gambar' : form_gambar,
+        # 'form_gambar' : form_gambar,
         'data': forum,
     })
 
@@ -155,7 +155,7 @@ def delete_komen(req, id, id_komen):
 
 def delete_komen_d(req, id, id_komen):
     models.Komen.objects.filter(pk=id_komen).delete()
-    messages.success(req, 'data telah di hapus.')
+    messages.success(req, 'data telah di hapusid_posting')
     return redirect(f'/forumd/{id}/komen')
 
 

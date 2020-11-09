@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'SIM_PKL.wsgi.application'
 DATABASES = {
         'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'simlabsos',
+        'NAME': 'labsos',
         'USER': 'mohamad',
         'PASSWORD': 'tatam123',
         'HOST': 'localhost',
