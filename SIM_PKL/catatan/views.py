@@ -80,17 +80,3 @@ def new(req, *args, **kwargs):
         'form_catatan' : form_catatan,
         'form_gambar' : form_gambar,
     })
-
-# def update(req, id):
-#     if req.POST:
-#         task = models.Catatan.objects.filter(pk=id).update(
-#             tgl_kegiatan=req.POST['tgl_kegiatan'], 
-#             judul=req.POST['judul'], 
-#             ket=req.POST['ket'], 
-#             upload_img=req.POST['upload_img'])
-#         return redirect('/catatan/')
-
-#     task = models.Catatan.objects.filter(pk=id).first()
-#     return render(req, 'catatan/update.html', {
-#         'data': task,
-#     })
