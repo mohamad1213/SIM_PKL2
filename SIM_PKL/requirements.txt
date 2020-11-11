@@ -6,10 +6,3 @@ django-heroku==0.3.1
 gunicorn==20.0.4
 Pillow==7.0.0
 psycopg2==2.8.5
-python-apt==2.0.0+ubuntu0.20.4.1
-python-dateutil==2.7.3
-python-debian===0.1.36ubuntu1
-ubuntu-advantage-tools==20.3
-ubuntu-drivers-common==0.0.0
-virtualenv==20.1.0
-whitenoise==5.2.0
