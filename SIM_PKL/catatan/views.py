@@ -4,8 +4,9 @@ from django.shortcuts import render, redirect
 from django.db.models.functions import ExtractWeekDay
 from django.forms.models import model_to_dict
 from datetime import datetime, timedelta
-# tasks : mengambil catatan berdasarkan user yang login
-# jika user adalah staff maka ambil semua catatan 
+from django.contrib.auth.decorators import login_required
+
+@login_required(login_url='/accounts/')
 def index(req):
     form_catatan = forms.CatatanForm()
     form_gambar = forms.GambarForm()
@@ -31,18 +32,18 @@ def index(req):
 
     })
     
-
+@login_required(login_url='/accounts/')
 def detail(req, id):
     task = models.Catatan.objects.filter(pk=id).first()
     return render(req, 'catatan/detail.html', {
         'data': task,
     })
-
+@login_required(login_url='/accounts/')
 def delete(req, id):
     models.Catatan.objects.filter(pk=id).delete()
     return redirect('/catatan/')
 
-
+@login_required(login_url='/accounts/')
 def index_dosen(req):
 
     group = req.user.groups.first() #mengambil group user
@@ -52,7 +53,7 @@ def index_dosen(req):
     return render(req, 'dosenah/index.html',{
         'data': catatans,
     })
-
+@login_required(login_url='/accounts/')
 def detail_dosen(req):
 
     group = req.user.groups.first() #mengambil group user
@@ -62,7 +63,7 @@ def detail_dosen(req):
     return render(req, 'dosenah/index.html',{
         'data': catatans,
     })
-
+@login_required(login_url='/accounts/')
 def new(req, *args, **kwargs):
     form_catatan = forms.CatatanForm()
     form_gambar = forms.GambarForm()
