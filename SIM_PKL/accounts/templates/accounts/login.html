@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-	<title>Register</title>
+	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="{% static 'login/images/icons/favicon.ico' %}" />
@@ -20,98 +20,57 @@
 </head>
 
 <body>
-
-	<!-- <div class="row justify-content-center" style="background-color: cornflowerblue;">
-		 -->
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-40 p-b-30">
-				<form class="login100-form validate-form" method="POST">
-					<span class="login100-form-title p-b-20">
-						Register
+			<form class="login100-form validate-form" method="POST">
+				<span class="login100-form-title p-b-10">
+					<img src="{% static 'css/UNU.png' %}" height="100%%" width="70%">
+				</span>
+				<span class="login100-form-title p-b-20 p-t-20">
+					Login
+				</span>
+				{% csrf_token %}
+
+				<div class="wrap-input100 validate-input m-b-16" style="padding:10px"
+					data-validate="Valid email is required: ex@abc.xyz">
+					<input class="input100" type="text" name="username" placeholder="username">
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+						<span class="lnr lnr-envelope"></span>
 					</span>
-					{% csrf_token %}
+				</div>
 
-					<!-- firstname -->
-					<div class="wrap-input100 validate-input m-b-3" style="padding:10px">
-						{{form.first_name}}
-						<span class="focus-input100" value= "{{form.first_name.value}}"></span>
-						<span class="symbol-input100">
-							<span class="lnr lnr-users"></span>
-						</span>
-					</div>
-					<!-- last_name -->
-					<div class="wrap-input100 validate-input m-b-3" style="padding:10px">
-						{{form.last_name}}
-						<span class="focus-input100" value="{{form.last_name.value}}"></span>
-						<span class="symbol-input100">
-							<span class="lnr lnr-users"></span>
-						</span>
-					</div>
-					<!-- username -->
-					<div class="wrap-input100 validate-input m-b-3" style="padding:10px">
-						{{form.username}}
-						<span class="focus-input100" value="{{form.username.value}}"></span>
-						<span class="symbol-input100">
-							<span class="lnr lnr-user"></span>
-						</span>
-					</div>
-
-					<!-- email -->
-					<div class="wrap-input100 validate-input m-b-3" style="padding:10px"
-						data-validate="Valid email is required: ex@abc.xyz">
-						{{form.email}}
-						<span class="focus-input100" value="{{form.email.value}}"></span>
-						<span class="symbol-input100">
-							<span class="lnr lnr-envelope"></span>
-						</span>
-					</div>
-
-
-					<!-- password 1 -->
-					<div class="wrap-input100 validate-input m-b-3" style="padding:10px"
-						data-validate="Password is required">
-						{{form.password1}}
-						<span class="focus-input100" value="{{form.password1.value}}"></span>
-						<span class="symbol-input100">
-							<span class="lnr lnr-lock"></span>
-						</span>
-
-					</div>
-					<div class="contact100-form-checkbox m-l-4">
-						<input class="input-checkbox100" id="ckb1" type="checkbox" onclick="myFunction()"
-							name="remember-me">
-						<label class="label-checkbox100" for="ckb1">
-							Show Password
-						</label>
-					</div>
-
-					<!-- password2 -->
-					<div class="wrap-input100 validate-input m-b-3" style="padding:10px"
-						data-validate="Password is required">
-						{{form.password2}}
-						<span class="focus-input100" value="{{form.password2.value}}"></span>
-						<span class="symbol-input100">
-							<span class="lnr lnr-lock"></span>
-						</span>
-					</div>
-					<div class="container-login100-form-btn p-t-25" style="padding:10px">
-						<button class="login100-form-btn" value="Register Account">
-							Register
-						</button>
-					</div>
-					<div class="text-center w-full p-t-0">
-						<span>
-							You have an account?
-						</span>
-						<a href="{% url 'login' %}">
-							Sign in now
-						</a>
-					</div>
-				</form>
-			</div>
-			{{form.errors}}
+				<div class="wrap-input100 validate-input m-b-16" style="padding:10px"
+					data-validate="Password is required">
+					<input class="input100" type="password" name="password" placeholder="Password..." id="myInput">
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+						<span class="lnr lnr-lock"></span>
+					</span>
+				</div>
+				<div class="contact100-form-checkbox m-l-4">
+					<input class="input-checkbox100" id="ckb1" type="checkbox" onclick="myFunction()" name="remember-me">
+					<label class="label-checkbox100" for="ckb1">
+						Show Password
+					</label>
+				</div>
+				<div class="container-login100-form-btn p-t-25" style="padding:10px">
+					<button class="login100-form-btn" value="Login">
+						Login	
+					</button>
+				</div>
+				<div class="text-center w-full p-t-0">
+					<span>
+						Don't have an account?
+					</span>
+					<a href="{% url 'register' %}">
+						Sign up now
+					</a>
+				</div>
+			</form>
 		</div>
+	</div>
 	</div>
 	<script>
 		function myFunction() {
