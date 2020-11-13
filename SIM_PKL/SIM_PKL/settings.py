@@ -2,16 +2,20 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'y&ma&g0z0r603*p2qz9^hotn**h60eey1w2kwb)glz#sdtt8&)'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS =  ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'labsosv1.herokuapp.com',
+]
 
 
 # Application definition
@@ -47,7 +51,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'SIM_PKL.urls'
-# TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
 TEMPLATES = [
     {
@@ -75,14 +78,16 @@ WSGI_APPLICATION = 'SIM_PKL.wsgi.application'
 
 DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'labsos',
-            'USER': 'mohamad',
-            'PASSWORD': 'tatam123',
-            'HOST': 'localhost',
-            'PORT': '',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dbk12puvf157ej',
+        'USER': 'kzbntlqwmzalfj',
+        'PASSWORD': '10c990a4089fa52853c22066dc9e6633b82249f8127854c93bebd4a6051a6990',
+        'HOST': 'ec2-3-220-222-72.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
+
+
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 

@@ -79,7 +79,6 @@ def cetak_staf(req):
     catatans = models.Catatan.objects.all() # mengambil semua object yang ada di models Catatan
     if group is not None and group.name == 'dosen': # mendefinisikan bahwa ini adalah dosen
         cetak = models.Catatan.objects.filter(owner=req.user)
-    # return redirect(f'/home/{id}')
     return render(req, 'staf/cetak.html', {
         'cetak' : cetak,
     })

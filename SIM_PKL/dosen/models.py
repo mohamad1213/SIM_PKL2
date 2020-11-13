@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+# from mahasiswa.models import Pkl
 
 class Dosen(models.Model):
     nama_dosen = models.CharField(max_length=100)
