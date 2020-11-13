@@ -19,4 +19,4 @@ class CreateUserForm(UserCreationForm):
 		self.fields['password1'].widget.attrs.update({ 'class': 'input100', 'placeholder': 'Enter Password..','id':'myInput'})
 		self.fields['password2'].widget.attrs.update({ 'class': 'input100', 'placeholder': 'Re-enter Password..' })
 
-
+		

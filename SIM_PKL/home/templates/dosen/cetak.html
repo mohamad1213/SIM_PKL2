@@ -36,9 +36,9 @@
         <br>
     </div>
     <dl class="row">
-        <dt class="col-1">Nama :</dt>
-        <dd class="col-5">{{user}}</dd>
-        <dt class="col-1">Labsos:</dt>
+        <dt class="col-1">Nama  :</dt>
+        <dd class="col-5">{{dosen.nama_dosen}}</dd>
+        <dt class="col-1">Kelompok:</dt>
         <dd class="col-5">{{forum.nama_mitra}}</dd>
     </dl>
     <!-- <dl class="row">
@@ -49,10 +49,10 @@
     </dl> -->
 
     <dl class="row">
-        <dt class="col-1">DPL:</dt>
-        <dd class="col-5">{{pkl.nama_dosen}}</dd>
-        <dt class="col-1">Judul :</dt>
-        <dd class="col-5">{{pkl.judul}}</dd>
+        <dt class="col-1">NIP :</dt>
+        <dd class="col-5">{{dosen.nip}}</dd>
+        <!-- <dt class="col-1">Mahasiswa:</dt>
+        <dd class="col-5">{{pkl.owner}}</dd> -->
     </dl>
     <dl class="row">
         <!-- masih menggunakan inputan dosen -->
@@ -66,8 +66,6 @@
         <tr style="background-color:lightblue;">
             <th>No</th>
             <th>Tanggal Kegiatan</th>
-            <!-- <th>Nama</th>
-            <th>Judul</th> -->
             <th>Uraian</th>
             <th>Selang Waktu (Menit)</th>
         </tr>
@@ -75,10 +73,8 @@
         <tr>
             <td>{{forloop.counter}}</td>
             <td>{{d.tgl_kegiatan}}</td>
-            <!-- <td>{{d.owner}}</td>
-            <td>{{d.judul}}</td> -->
             <td>{{d.ket}}</td>
-            <td>{{d.waktu_kegiatan}}</td>
+            <td>{{d.waktu_kegiatan}} Menit</td>
 
 
         </tr>

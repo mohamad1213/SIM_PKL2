@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+# from django.conf.urls import handler404, handler500
 from django.conf.urls.static import static
 
 urlpatterns = [
@@ -12,9 +13,10 @@ urlpatterns = [
     path('mahasiswa/', include('mahasiswa.urls')),
     path('mahasiswas/', include('mahasiswa.urls_staf')),
     path('dosenah/', include('mahasiswa.urls_dosen')),
+
     # path('dosen/', include('dosen.urls')),
     path('dosens/', include('dosen.urls_staf')),
-    path('catatan_d/', include('catatan.urls_dosen')),
+    path('catatan.d/',include('catatan.urls_dosen')),
     path('mitras/', include('mitra.urls_staf')),
     path('forums/', include('forum.urls_staf')),
     path('forumd/', include('forum.urls_dosen')),
@@ -22,3 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# handler404 = home.views.error_404
+# handler500 = home.views.error_500
+
+

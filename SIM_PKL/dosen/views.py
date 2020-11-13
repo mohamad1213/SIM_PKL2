@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from mahasiswa.models import Pkl
+from catatan.models import Catatan
 from . import models, forms
 from django.contrib.auth.decorators import login_required
 
@@ -9,13 +10,13 @@ from django.contrib.auth.decorators import login_required
 def index(req):
     return render(req, 'dosen/index.html')
 
-@login_required(login_url='/accounts/')
-def detail_dosen(req, id):
-    dosen = models.Dosen.objects.filter(pk=id).first()
-    catatans = Catatan.objects.filter(owner=dosen.owner) # mengambil semua object yang ada di models Catatan
-    return render(req, 'dosens/detail.html',{
-        'data': catatans,
-    })
+# @login_required(login_url='/accounts/')
+# def detail_dosen(req, id):
+#     dosen = models.Dosen.objects.filter(pk=id).first()
+#     catatans = Catatan.objects.filter(owner=dosen.owner) # mengambil semua object yang ada di models Catatan
+#     return render(req, 'dosens/detail.html',{
+#         'data': catatans,
+#     })
 
 @login_required(login_url='/accounts/')
 def index_staf(req):
@@ -37,16 +38,26 @@ def index_staf(req):
         'form_user' : form_user,
     })
 
+# @login_required(login_url='/accounts/')
+# def detail_staf(req, id):
+#     dosen = models.Dosen.objects.all()
+#     group = req.user.groups.first(pk=id)
+#     if group is not None and group.name == 'dosen':
+#         mahasiswa = models.Pkl.objects.all()
+#     return render(req, 'dosen/catatan.html',{
+#         'data': dosen,
+#         'data': mahasiswa,
+#     })
 @login_required(login_url='/accounts/')
-def catatan(req, id):
-    dosen = models.Dosen.objects.all()
-
-    group = req.user.groups.first(pk=id)
+def detail_staf(req, id):
+    dosen = models.Catatan.objects.filter(pk=id).first()
+    print(dosen)
     if group is not None and group.name == 'dosen':
         mahasiswa = models.Pkl.objects.all()
-    return render(req, 'dosen/catatan.html',{
-        'data': dosen,
-        'data': mahasiswa,
+    catatans = Catatan.objects.filter(owner=dosen.nama_dosen) # mengambil semua object yang ada di models Catatan
+    return render(req, 'dosens/detail.html',{
+        'data': catatans,
+        'data':mahasiswa,
     })
 
 @login_required(login_url='/accounts/')
@@ -60,7 +71,7 @@ def update_staf(req, id):
         'data': dosen,
     })
 
-@login_required(login_url='/accounts/')
-def delete_staf(req, id):
-    models.Dosen.objects.filter(pk=id).delete()
-    return redirect('/dosens/')
+# @login_required(login_url='/accounts/')
+# def delete_staf(req, id):
+#     models.Dosen.objects.filter(pk=id).delete()
+#     return redirect('/dosens/')
