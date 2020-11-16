@@ -50,11 +50,14 @@ def index_staf(req):
             form_input.save()
             messages.success(req, 'Data telah ditambahkan.')
         return redirect('/mahasiswas')
+         else:
+            messages.error(req, 'A problem has been occurred while submitting your data.')
+            print(form_input.errors)
         
 
-    group = req.user.groups.first()
-    if group is not None and group.name == 'staf':
-        tasks = models.Pkl.objects.all()
+    # group = req.user.groups.first()
+    # if group is not None and group.name == 'staf':
+    #     tasks = models.Pkl.objects.all()
     return render(req, 'mahasiswas/index.html',{
         'data': tasks,
         'form_reject':form_reject,  

@@ -9,12 +9,24 @@ from django.contrib.auth.decorators import login_required
 def index(req):
     return render(req, 'dosen/index.html')
 
+# @login_required(login_url='/accounts/')
+# def detail_dosen(req, id):
+#     dosen = models.Dosen.objects.filter(pk=id).first()
+#     catatans = Catatan.objects.filter(owner=dosen.owner) # mengambil semua object yang ada di models Catatan
+#     return render(req, 'dosens/detail.html',{
+#         'data': catatans,
+#     })
+
 @login_required(login_url='/accounts/')
-def detail_dosen(req, id):
-    dosen = models.Dosen.objects.filter(pk=id).first()
-    catatans = Catatan.objects.filter(owner=dosen.owner) # mengambil semua object yang ada di models Catatan
+def detail_staf(req, id):
+    dosen = models.Catatan.objects.filter(pk=id).first()
+    print(dosen)
+    if group is not None and group.name == 'dosen':
+        mahasiswa = models.Pkl.objects.all()
+    catatans = Catatan.objects.filter(owner=dosen.nama_dosen) # mengambil semua object yang ada di models Catatan
     return render(req, 'dosens/detail.html',{
         'data': catatans,
+        'data':mahasiswa,
     })
 
 @login_required(login_url='/accounts/')
