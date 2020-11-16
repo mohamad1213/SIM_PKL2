@@ -50,9 +50,8 @@ def index_staf(req):
             form_input.save()
             messages.success(req, 'Data telah ditambahkan.')
         return redirect('/mahasiswas')
-         else:
+        else:
             messages.error(req, 'A problem has been occurred while submitting your data.')
-            print(form_input.errors)
         
 
     # group = req.user.groups.first()
