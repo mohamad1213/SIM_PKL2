@@ -15,6 +15,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'labsosv1.herokuapp.com',
+    'localhost',
 ]
 
 
