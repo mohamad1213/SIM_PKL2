@@ -4,7 +4,7 @@
 <div class="container-fluid" style="padding: 5px;">
   <h1 class="mt-4 mb-4" style="text-align: center;">Daily Report</h1>
   <div class="row">
-    <div class="col" style="padding: 0; ">
+    <div class="col">
       <button type="button" class="btn btn-warning mb-4 rounded-pill" data-toggle="modal" data-target="#tambah"
         style="background-color:rgb(255, 214, 0); color: black;">
         <span><span>&#43;</span><b> T U L I S </b></span>
@@ -36,13 +36,12 @@
                   <td>{{forloop.counter}}</td>
                   <td>{{d.waktu}}</td>
                   <td>{{d.judul}}</td>
-                  <!-- <td>{{d.ket}}</td> -->
                   <td>
                     {% for img_obj in d.catatan.all %}
                     <a href="{{img_obj}}">File {{forloop.counter}}</a>
                     {% endfor %}
                   </td>
-                  <td>{{d.selang}}</td>
+                  <td>{{d.selang}} menit</td>
                 </tr>
                 <!-- Modal Detail -->
                 <div class="modal fade" id="detail-{{d.id}}" tabindex="-1" role="dialog"
