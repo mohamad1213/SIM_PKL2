@@ -52,9 +52,9 @@ def index_staf(req):
         return redirect('/mahasiswas')
         
 
-    # group = req.user.groups.first()
-    # if group is not None and group.name == 'staf':
-    #     tasks = models.Pkl.objects.all()
+    group = req.user.groups.first()
+    if group is not None and group.name == 'staf':
+        tasks = models.Pkl.objects.all()
     return render(req, 'mahasiswas/index.html',{
         'data': tasks,
         'form_reject':form_reject,  
