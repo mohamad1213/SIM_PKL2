@@ -36,6 +36,33 @@ def index(req):
         
     })
     
+@login_required(login_url='/accounts/')
+def index_sem1(req):
+
+    tasks_approved = models.Pkl.objects.filter(owner=req.user,approve=True).first()
+    tasks = models.Pkl.objects.filter(owner=req.user)
+    form_input = forms.PklForm()
+
+    if req.POST:
+        form_input = forms.PklForm(req.POST, req.FILES)
+        if form_input.is_valid():
+            form_input.instance.owner = req.user
+            form_input.save()
+            messages.success(req, 'Data telah ditambahkan.')
+            return redirect('/sem1')
+        else:
+            messages.error(req, 'A problem has been occurred while submitting your data.')
+            print(form_input.errors)
+
+    # group = req.user.groups.first()
+    # if group is not None and group.name == 'staf':
+    #     tasks = models.Pkl.objects.all()
+    return render(req, 'sem1/index.html',{
+        'form' : form_input,
+        'data': tasks,
+        'data_approved': tasks_approved,
+        
+    })
 
 @login_required(login_url='/accounts/')
 def index_staf(req):
