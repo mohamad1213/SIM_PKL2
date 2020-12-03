@@ -38,6 +38,7 @@ def detail(req, id):
     return render(req, 'catatan/detail.html', {
         'data': task,
     })
+    
 @login_required(login_url='/accounts/')
 def delete(req, id):
     models.Catatan.objects.filter(pk=id).delete()
@@ -45,14 +46,18 @@ def delete(req, id):
 
 @login_required(login_url='/accounts/')
 def index_dosen(req):
-
-    group = req.user.groups.first() #mengambil group user
-    catatans = models.Catatan.objects.all() # mengambil semua object yang ada di models Catatan
-    if group is not None and group.name == 'dosen': # mendefinisikan bahwa ini adalah dosen
-        catatans = models.Catatan.objects.filter(owner=req.user)
-    return render(req, 'dosenah/index.html',{
-        'data': catatans,
-    })
+    form_catatan = forms.CatatanForm()
+    form_gambar = forms.GambarForm()
+    if req.method == 'POST':
+        form_catatan = forms.CatatanForm(req.POST)
+        if form_catatan.is_valid():
+            form_catatan.instance.owner=req.user
+            form_catatan.save()
+        images = []
+        files = req.FILES.getlist('upload_img')
+        for file in files:
+            images.append(models.Gambar.objects.create(upload_img=file,catatan=form_catatan.instance))
+        return redirect('/catatan.d/')
 @login_required(login_url='/accounts/')
 def detail_dosen(req):
 

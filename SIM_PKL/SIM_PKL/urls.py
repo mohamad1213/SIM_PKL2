@@ -7,18 +7,26 @@ urlpatterns = [
     path('', include('home.urls')),
     # path('staf/', include('staf.urls')),
     path('catatan/', include('catatan.urls')),
-    # path('catatan_dosen/', include('catatan.urls_dosen')),
+    path('catatan.d/',include('catatan.urls_dosen')),
+    path('catatan.sem1/',include('catatan.urls_sem1')),
     path('accounts/', include('accounts.urls')),
     path('mahasiswa/', include('mahasiswa.urls')),
+    path('sem1/', include('mahasiswa.urls_sem1')),
     path('mahasiswas/', include('mahasiswa.urls_staf')),
     path('dosenah/', include('mahasiswa.urls_dosen')),
+
     # path('dosen/', include('dosen.urls')),
     path('dosens/', include('dosen.urls_staf')),
-    path('catatan_d/', include('catatan.urls_dosen')),
     path('mitras/', include('mitra.urls_staf')),
     path('forums/', include('forum.urls_staf')),
     path('forumd/', include('forum.urls_dosen')),
     path('forum/', include('forum.urls')),
+    path('forumsem1/', include('forum.urls_sem1')),
     path('admin/', admin.site.urls),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# handler404 = home.views.error_404
+# handler500 = home.views.error_500
+
+

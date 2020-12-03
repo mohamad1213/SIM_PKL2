@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Dashboard - Staf</title>
+    <title>Dashboard - Dosen</title>
     <link rel="stylesheet" href="{% static 'css/dist/css/sweetalert.css' %}">
     <link href="{% static 'css/dist/css/styles.css' %}" rel="stylesheet" />
     <link href="{% static 'css/dist/js/dataTables.bootstrap4.min.css' %}" rel="stylesheet" crossorigin="anonymous" />
@@ -18,18 +18,17 @@
 
 <body>
     <!-- new -->
-    <nav class="navbar d-flex justify-content-between py-3" style="background-color: rgb(255, 214, 0); ">
+    <nav class="navbar d-flex justify-content-between py-3" style="background-color: rgb(255, 214, 0);;">
         <div class="bd-highlight">
             <a href="/" class="d-flex d-sm-none"><img src="{% static 'css/UNU.png' %}" width="60px"></a>
-            <a href="/" class="d-none d-sm-flex"><img src="{% static 'css/logo.png' %}" width="250px"></a>
+            <a href="/" class="d-none d-sm-flex"><img src="{% static 'css/logo.png' %}" width="200px"></a>
         </div>
 
         <div class="bd-highlight">
-            <h5 class="navbar-dark" style=" padding-right: 1rem; margin: 0;">
-                SIM-LABSOS
-            </h5>
+            <h3 class="navbar-dark d-none d-sm-flex" style=" padding-right: 1rem; margin: 0;">Monitoring Laboratorium
+                Sosial</h3>
+            <h3 class="navbar-dark d-flex d-sm-none" style=" padding-right: 1rem; margin: 0;">LABSOS-Mobile</h3>
         </div>
-
         <div class="bd-highlight">
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#" style="color: black;"><i
                     class="fas fa-bars"></i></button>
@@ -38,29 +37,38 @@
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                <div class="sb-sidenav-menu" style="background-color: #625f53;">
+                <div class="sb-sidenav-menu" style="background-color: #736357;">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading" style="color: honeydew;">{{user}}</div>
-                        <a class="nav-link collapsed" href="/">
-                            <div class="sb-nav-link-icon btn btn-sm btn-warning rounded-pill"
-                                style="margin-top: 10px; color: black; width: 100%; background-color: rgb(255, 214, 0);">
-                                <i class="fas fa-tachometer-alt"></i>
-                                Dashboard
-                            </div>
+                        <a class="nav-link" href="/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboard
                         </a>
-                        <a class="nav-link collapsed" href="/cetak_staf">
-                            <div class="sb-nav-link-icon btn btn-sm btn-warning rounded-pill"
-                                style="margin-top: 10px; color: black; width: 100%; background-color: rgb(255, 214, 0);">
-                                <i class="fas fa-book-open"></i>
-                                Cetak Dokumen
-                            </div>
+                        <br>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts"
+                            aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Manajement
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <a class="nav-link collapsed" href="/accounts/logout">
-                            <div class="sb-nav-link-icon btn btn-sm btn-warning rounded-pill"
-                                style="margin-top: 10px; color: black; width: 100%; background-color: rgb(255, 214, 0);">
-                                <i class="fas fa-sign-out-alt"></i>
-                                Logout
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="/dosenah">Data Labsos</a>
+                                <a class="nav-link" href="/catatan.d">Catatan Mentor/Dosen</a>
+                                <a class="nav-link" href="/forumd">Forum</a>
+                            </nav>
+                        </div>
+                        <br>
+                        <a class="nav-link" href="/cetak_dosen">
+                            <div class="sb-nav-link-icon"><i class="fas fa-print"></i></div>
+                            Cetak Dokumen
+                        </a>
+                        <br>
+                        <a class="nav-link" href="/accounts/logout">
+                            <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i>
                             </div>
+                            Logout
                         </a>
                     </div>
                 </div>
@@ -103,4 +111,4 @@
 
 </body>
 
-</html> 
+</html>

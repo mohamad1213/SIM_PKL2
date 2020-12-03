@@ -1,10 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- Forum -->
-
-<!-- -- New -- -->
 <div class="container-fluid" style="padding: 5px;">
+    <button type="button" class="btn-primary" onclick="history.back();"><i class="fas fa-arrow-left"></i> Preview</button>
     <div class="row">
         <div class="col-12">
             <h2 class="mt-4" style="text-align: center;">Forum {{data.nama_mitra}}</h2>
@@ -29,7 +27,8 @@
                             <!-- This is some text within a card body. -->
                             <div class="media-body">
                                 <div style="text-align: right;">
-                                    <a href="#delete-{{d.id}}" data-toggle="modal" data-target="#delete-{{d.id}}">Hapus</a>
+                                    <a href="#delete-{{d.id}}" data-toggle="modal"
+                                        data-target="#delete-{{d.id}}">Hapus</a>
                                 </div>
                                 <h5>{{d.owner}} <small><i>Posted on {{d.waktu}}</i></small></h5>
                                 <hr>
@@ -47,10 +46,10 @@
                                 </form>
                                 <br>
                                 <div style="text-align: left;">
-                                    <a href="#komen-{{d.id}}" data-toggle="collapse" data-target="#komen-{{d.id}}" role="button"
-                                        aria-expanded="false" aria-controls="komen">show all comment</a>
+                                    <a href="#komen-{{d.id}}" data-toggle="collapse" data-target="#komen-{{d.id}}"
+                                        role="button" aria-expanded="false" aria-controls="komen">show all comment</a>
                                 </div>
-                                
+
                                 {% for k in d.komentar.all %}
                                 <div class="media p-3">
                                     <div class="collapse multi-collapse" id="komen-{{d.id}}">
@@ -100,6 +99,5 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 {% endblock %}

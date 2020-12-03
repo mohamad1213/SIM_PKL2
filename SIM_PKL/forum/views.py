@@ -94,7 +94,6 @@ def detail_forum_d(req, id):
     form_input = forms.PostingForm()
     form_komen = forms.KomenForm()
     form_balas = forms.BalasForm()
-    print(forum)
 
     if req.POST:
         form_input = forms.PostingForm(req.POST, req.FILES)
@@ -212,3 +211,17 @@ def mhs_komen(req, id, id_posting):
             form_komen.save()
 
     return redirect(f'/forum/{id}')
+def update_staf(req, id):
+    if req.POST:
+        forum = models.Forum.objects.filter(pk=id).update(
+            nama_mitra=req.POST['nama_mitra'], 
+            pic=req.POST['pic'], 
+            alamat=req.POST['alamat'], 
+            telp=req.POST['telp'],
+            deskripsi=req.POST['deskripsi'])
+        return redirect('/forums')
+
+    forum = models.Forum.objects.filter(pk=id).first()    
+    return render(req, 'forums/update.html', {
+        'data': forum,
+    })

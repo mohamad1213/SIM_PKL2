@@ -10,7 +10,6 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/accounts/')
 def index(req):
-    group = req.user.groups.first()
     tasks = models.Catatan.objects.filter(owner=req.user)
     form_catatan = forms.CatatanForm()
     form_gambar = forms.GambarForm()
@@ -26,8 +25,11 @@ def index(req):
             images.append(models.Gambar.objects.create(upload_img=file,catatan=form_catatan.instance))
         return redirect('/')
 
+    group = req.user.groups.first()
     if group is not None and group.name == 'dosen':
         return render(req, 'dosen/index.html')
+    elif group is not None and group.name == 'semester1':
+        return render(req, 'semester1/index.html')
     elif group is not None and group.name == 'staf':
         tasks = models.Catatan.objects.all()
         return render(req, 'staf/index.html')
@@ -77,8 +79,9 @@ def cetak_dosen(req):
 def cetak_staf(req):
     group = req.user.groups.first() #mengambil group user
     catatans = models.Catatan.objects.all() # mengambil semua object yang ada di models Catatan
-    if group is not None and group.name == 'dosen': # mendefinisikan bahwa ini adalah dosen
+    if group is not None and group.name == 'staf': # mendefinisikan bahwa ini adalah dosen
         cetak = models.Catatan.objects.filter(owner=req.user)
+    # return redirect(f'/home/{id}')
     return render(req, 'staf/cetak.html', {
         'cetak' : cetak,
     })
