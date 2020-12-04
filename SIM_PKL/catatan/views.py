@@ -58,6 +58,17 @@ def index_dosen(req):
         for file in files:
             images.append(models.Gambar.objects.create(upload_img=file,catatan=form_catatan.instance))
         return redirect('/catatan.d/')
+    tasks = models.Catatan.objects.filter(owner=req.user).annotate(week=ExtractWeekDay('waktu'))
+    group = req.user.groups.first()
+    if group is not None and group.name == 'staf':
+        tasks = models.Catatan.objects.annotate(week=ExtractWeekDay('waktu'))
+    return render(req, 'catatan.d/index.html',{
+        'data': tasks,
+        'form_catatan' : form_catatan,
+        'form_gambar' : form_gambar,
+
+    })
+
 @login_required(login_url='/accounts/')
 def detail_dosen(req):
 
