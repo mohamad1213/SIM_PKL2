@@ -11,11 +11,12 @@ SECRET_KEY = 'y&ma&g0z0r603*p2qz9^hotn**h60eey1w2kwb)glz#sdtt8&)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = [
-    'labsosv1.herokuapp.com',
-    'localhost',
 ]
+# ALLOWED_HOSTS = [
+#     'labsosv1.herokuapp.com',
+#     'localhost',
+# ]
 
 
 # Application definition
@@ -84,6 +85,12 @@ DATABASES = {
         'USER': 'kzbntlqwmzalfj',
         'PASSWORD': '10c990a4089fa52853c22066dc9e6633b82249f8127854c93bebd4a6051a6990',
         'HOST': 'ec2-3-220-222-72.compute-1.amazonaws.com',
+
+        'PORT': '5432',
+        'NAME': 'labsos',
+        'USER': 'tatam',
+        'PASSWORD': 'katakanlah123',
+        'HOST': 'localhost',
     }
 }
 
